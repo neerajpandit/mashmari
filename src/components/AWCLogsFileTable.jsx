@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from './Loader';
 import FolderCard from './FolderCard';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const AWCLogsFileTable = () => {
   const [folders, setFolders] = useState([]);
   const [filteredFolders, setFilteredFolders] = useState([]);
@@ -23,7 +23,7 @@ const AWCLogsFileTable = () => {
         setLoading(true);
         const token = localStorage.getItem('accessToken');
         const res = await axios.get(
-          'http://localhost:8000/api/v1/anganwadi?prefix=mashmari-rms-logs/',
+          `${apiUrl}/anganwadi?prefix=mashmari-rms-logs/`,
           // 'http://monitoring.mashmari.in:8000/api/v1/anganwadi?prefix=mashmari-rms-logs/',
           {
             headers: {
@@ -77,7 +77,7 @@ const AWCLogsFileTable = () => {
       const token = localStorage.getItem('accessToken');
 
       const response = await axios.get(
-        `http://monitoring.mashmari.in:8000/api/v1/anganwadi/read-report?key=${key}`,
+        `${apiUrl}/anganwadi/read-report?key=${key}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

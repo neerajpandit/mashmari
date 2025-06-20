@@ -1,5 +1,5 @@
 import axios from "axios";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const customAxios = axios.create({
   withCredentials: true, // Only send cookies like refresh token
 });
@@ -25,7 +25,7 @@ customAxios.interceptors.response.use(
       try {
         // Refresh token API call
         const res = await axios.post(
-          "http://localhost:8000/api/v1/auth/refresh-token",
+          `${apiUrl}/auth/refresh-token`,
           {},
           {
             withCredentials: true, // Send refresh token cookie

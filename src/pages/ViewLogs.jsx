@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import FolderCard from '../components/FolderCard';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const ViewLogs = () => {
   const location = useLocation();
   const awc = location.state?.awc;
@@ -26,7 +26,7 @@ const ViewLogs = () => {
       const token = localStorage.getItem('accessToken');
 
       const response = await axios.get(
-        `http://monitoring.mashmari.in:8000/api/v1/anganwadi/read-report?key=${key}`,
+        `${apiUrl}/anganwadi/read-report?key=${key}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FileTable from './FileTable';
 import { FaChevronDown, FaChevronRight, FaFolder } from 'react-icons/fa';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const AWCLogDetails = ({ awc, onBack }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileData, setFileData] = useState([]);
@@ -17,7 +17,7 @@ const AWCLogDetails = ({ awc, onBack }) => {
 
     try {
       const key = `mashmari-rms-logs/${awc.code}/${fileName}`;
-      const res = await fetch(`http://monitoring.mashmari.in:8000/api/v1/anganwadi/read-report?key=${key}`);
+      const res = await fetch(`${apiUrl}/anganwadi/read-report?key=${key}`);
       const data = await res.json();
 
       const rows = data.content

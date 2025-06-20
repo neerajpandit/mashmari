@@ -7,7 +7,7 @@ import logo from '../assets/logo.jpeg'
 import { useNavigate } from 'react-router-dom'; 
 import ViewLogs from './ViewLogs';
 import { useLocation } from 'react-router-dom';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const Dashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
     try {
       if (token) {
-        const response = await fetch('http://monitoring.mashmari.in:8000/api/v1/auth/logout', {
+        const response = await fetch(`${apiUrl}/auth/logout`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

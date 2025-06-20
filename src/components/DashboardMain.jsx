@@ -6,6 +6,7 @@ import AWCSearch from './AWCSearch';
 import Loader from './Loader';
 import AWCLogCard from './AWCLogCard';
 import customAxios from '../utils/customAxios';
+const apiUrl = import.meta.env.VITE_API_URL;
 const Dashboardmain = () => {
     const [filters, setFilters] = useState({
         status: '',
@@ -30,7 +31,7 @@ const Dashboardmain = () => {
 
                 const token = localStorage.getItem('accessToken'); 
 
-                const res = await fetch('http://monitoring.mashmari.in:8000/api/v1/anganwadi?prefix=mashmari-rms-logs/', {
+                const res = await fetch(`${apiUrl}/anganwadi?prefix=mashmari-rms-logs/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
